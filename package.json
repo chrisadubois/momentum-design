@@ -7,15 +7,18 @@
     "./packages/**/*"
   ],
   "scripts": {
-    "tokens": "yarn workspace @momentum-design/tokens",
+    "analyze": "yarn workspaces foreach run analyze",
+    "build": "yarn workspaces foreach run build",
+    "test": "yarn workspaces foreach run test",
+    "clean": "yarn workspaces foreach run clean",
     "postinstall": "husky install ./config/husky",
     "upgrade:vscode": "yarn dlx @yarnpkg/sdks vscode",
-    "analyze": "yarn workspaces foreach run analyze",
     "analyze:config": "eslint \"./config/**\"",
     "clean:plop": "rimraf ./config/plop/dist",
     "build:plop": "yarn clean:plop && node ./config/plop/esbuild.config.plop.js",
     "generate:plop": "yarn build:plop && plop --plopfile config/plop/dist/plopfile.js",
-    "generate": "yarn generate:plop && yarn install"
+    "generate": "yarn generate:plop && yarn install",
+    "tokens": "yarn workspace @momentum-design/tokens"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
