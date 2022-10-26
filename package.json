@@ -2,6 +2,7 @@
   "name": "momentum-design",
   "packageManager": "yarn@3.2.4",
   "private": true,
+  "type": "module",
   "workspaces": [
     "./packages/**/*"
   ],
