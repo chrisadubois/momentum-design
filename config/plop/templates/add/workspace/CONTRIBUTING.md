@@ -1,5 +1,5 @@
 ---
-component: md-{{kebabCase packageName}}
+package: @momentum-design/{{kebabCase packageName}}
 ---
 
 # {{pascalCase packageName}}
