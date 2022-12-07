@@ -1,16 +1,17 @@
 {
     "compilerOptions": {
         "skipLibCheck": true,
-        "target": "es6",
+        "target": "ES2015",
         "lib": [
-            "es6"
+            "ES2015"
         ],
         "strict": true,
         "typeRoots": [
             "../../../../../node_modules/@types",
-            "../../../../../node_modules/@figma"
-        ]
+            "../../../../../node_modules/@figma",
+            "../../../../../node_modules/@octokit/types/**/*"
+        ],
+        "moduleResolution": "node"
     },
-    "include": ["./**/*.*", "../shared/*.ts"],
-    "exclude": ["node_modules"]
+    "include": ["./**/*.*", "../shared/*.ts", "../../../../../node_modules/@octokit/**/*"],
 }

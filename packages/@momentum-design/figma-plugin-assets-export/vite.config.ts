@@ -7,7 +7,7 @@ export default defineConfig({
   root: './src/ui',
   plugins: [reactRefresh(), viteSingleFile()],
   build: {
-    target: 'esnext',
+    sourcemap: true,
     assetsInlineLimit: 100000000,
     chunkSizeWarningLimit: 100000000,
     cssCodeSplit: false,

@@ -11,6 +11,7 @@ module.exports = {
   ],
   globals: {
     BufferEncoding: 'readonly',
+    figma: 'readonly',
   },
   ignorePatterns: ['**/dist/**', '*.hbs', 'scripts/**'],
   overrides: [

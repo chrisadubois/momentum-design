@@ -40,6 +40,8 @@ class Component {
 
   get assetName() {
     let name = '';
+    // eslint-disable-next-line
+    const {...rest} = this.replacementMap;
     const nameParts = this.config.fileName.parts.reduce((filtered: Array<string>, part) => {
       const namePart = this.replacementMap[part];
       if (namePart) {

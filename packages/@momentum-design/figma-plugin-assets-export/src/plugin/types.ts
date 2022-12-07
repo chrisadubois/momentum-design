@@ -21,3 +21,10 @@ export type Asset = {
   path: string;
   data: string;
 };
+
+export type GithubSync = {
+  githubOwner: string;
+  githubPersonalToken: string;
+  gitBranch: string;
+  gitRepo: string;
+}

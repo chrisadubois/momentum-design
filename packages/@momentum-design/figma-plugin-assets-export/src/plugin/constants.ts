@@ -35,6 +35,15 @@ const INITIAL_SETTINGS = {
     contentsOnly: true,
     useAbsoluteBounds: false,
   },
+  sync: {
+    git: {
+      githubPersonalToken:
+      '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',
+      gitBranch: 'test-automation-branch',
+      githubOwner: 'momentum-design',
+      gitRepo: 'momentum-design',
+    },
+  },
 };
 
 const CONSTANTS = {
