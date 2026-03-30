@@ -2,6 +2,31 @@
   "name": "@momentum-design/icons",
   "packageManager": "yarn@3.2.4",
   "version": "0.0.0",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/es/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.js"
+    },
+    "./icons/*": {
+      "types": "./dist/es/*.d.ts",
+      "import": "./dist/es/*.js"
+    },
+    "./dynamicIconImports": {
+      "types": "./dist/es/dynamicIconImports.d.ts",
+      "import": "./dist/es/dynamicIconImports.js"
+    },
+    "./svg/*": "./dist/svg/*",
+    "./manifest.json": "./dist/manifest.json",
+    "./dist/ts/*": "./dist/ts/*",
+    "./dist/types/*": "./dist/types/*",
+    "./dist/es/*": "./dist/es/*",
+    "./dist/manifest.json": "./dist/manifest.json"
+  },
   "files": [
     "./dist/"
   ],
@@ -9,8 +34,9 @@
     "analyze": "yarn analyze:prebuild && yarn analyze:postbuild",
     "analyze:postbuild": "echo \"script 'analyze:postbuild' has not been implemented\"",
     "analyze:prebuild": "echo \"script 'analyze:prebuild' has not been implemented\"",
-    "build": "yarn build:core",
+    "build": "yarn build:core && yarn build:es-extras",
     "build:core": "md-builder -- --definition --icons --config ./config/momentum.json && yarn minify:css",
+    "build:es-extras": "node ./scripts/generate-es-extras.mjs",
     "minify:css": "cleancss ./dist/data/MomentumFontIcons.css -o ./dist/data/MomentumFontIcons.min.css",
     "clean": "yarn clean:dist",
     "clean:dist": "rimraf ./dist",

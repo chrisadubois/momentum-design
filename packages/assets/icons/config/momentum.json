@@ -290,7 +290,7 @@
             }
           }
         },
-        { 
+        {
           "id": "lit-icons",
           "target": "./dist/svg/**/*.*",
           "destination": "./dist/ts",
@@ -299,6 +299,19 @@
             "config": {
               "partName": "icon",
               "hbsPath": "./config/templates/lit.ts.hbs"
+            }
+          }
+        },
+        {
+          "id": "lit-icons-es",
+          "target": "./dist/svg/**/*.*",
+          "destination": "./dist/es",
+          "format": {
+            "type": "LIT",
+            "config": {
+              "partName": "icon",
+              "hbsPath": "./config/templates/lit.ts.hbs",
+              "outputExtension": ".js"
             }
           }
         }

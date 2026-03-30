@@ -14,7 +14,7 @@ const { publicPath, port } = require('./configs/e2e');
 // normal URL fetching will be done
 const replaceBrandVisualsDynamicImport = source => {
   const newSource = source.replace(
-    '@momentum-design/brand-visuals/dist/ts/${this.name}.ts',
+    '@momentum-design/brand-visuals/brand-visuals/${this.name}',
     '../../../playwright-temp/brandvisuals/index',
   );
   return newSource;
@@ -40,7 +40,7 @@ const replaceAnimationAssetsPathPlugin = {
     build.onLoad({ filter: /animation.component.ts/ }, async args => {
       const source = await fs.promises.readFile(args.path, 'utf8');
       const contents = source.replace(
-        '@momentum-design/animations/dist/lottie${path}',
+        '@momentum-design/animations/lottie/${animPath}',
         '../../../playwright-temp/assets/animations/animation.json',
       );
       return { contents, loader: 'default' };

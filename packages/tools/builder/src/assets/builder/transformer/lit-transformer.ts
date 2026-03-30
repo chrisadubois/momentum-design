@@ -40,10 +40,11 @@ class LitTransformer extends Transformer {
     // retrieve the file name, i.e. accessibility-regular
     const fileName = path.basename(file.srcPath, '.svg');
 
+    const ext = this.format.config.outputExtension || '.ts';
     return transformHbs(path.resolve(this.format.config.hbsPath))
       .then((template) => ({
         ...file,
-        distPath: path.join(this.destination, `${fileName}.ts`),
+        distPath: path.join(this.destination, `${fileName}${ext}`),
         data: template({
           svgData: this.addAttributesToSvg(file.data, fileName, this.format.config.partName),
         }),

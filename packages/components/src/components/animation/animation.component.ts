@@ -134,9 +134,9 @@ class Animation extends Component {
     if (this.name && animationManifest[this.name]) {
       // Make sure the path is point to a folder (and its sub-folders) that contains animation data only
       // otherwise bundlers (eg. webpack) will try to process everything in this folder including the types.d.ts
-      const path = animationManifest[this.name].replace(/^\.\/lottie/, '');
+      const animPath = animationManifest[this.name].replace(/^\.\/lottie\//, '');
 
-      import(`@momentum-design/animations/dist/lottie${path}`)
+      import(`@momentum-design/animations/lottie/${animPath}`)
         .then((result: any) => this.onLoadSuccessHandler(result.default))
         .catch((error: Error) => this.onLoadFailHandler(error));
     } else {

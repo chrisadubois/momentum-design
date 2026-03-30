@@ -166,8 +166,9 @@ class Icon extends Component {
       }
 
       if (iconSet === 'momentum-icons' && this.name) {
-        // dynamic import of the lit template from the momentum icons package
-        return import(`@momentum-design/icons/dist/ts/${this.name}.ts`)
+        // dynamic import of the compiled ES module from the momentum icons package
+        // Uses the exports map: @momentum-design/icons/icons/* → dist/es/*.js
+        return import(`@momentum-design/icons/icons/${this.name}`)
           .then(module => {
             this.handleIconLoadedSuccess(module.default());
           })

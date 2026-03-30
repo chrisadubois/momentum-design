@@ -2,6 +2,28 @@
   "name": "@momentum-design/animations",
   "packageManager": "yarn@3.2.4",
   "version": "0.0.0",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/manifest.js",
+  "module": "./dist/manifest.js",
+  "types": "./dist/types/types.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/types.d.ts",
+      "import": "./dist/manifest.js"
+    },
+    "./manifest": {
+      "import": "./dist/manifest.js"
+    },
+    "./manifest.json": "./dist/manifest.json",
+    "./lottie/*": "./dist/lottie/*",
+    "./svg/*": "./dist/svg/*",
+    "./dist/manifest": "./dist/manifest.ts",
+    "./dist/manifest.json": "./dist/manifest.json",
+    "./dist/lottie/*": "./dist/lottie/*",
+    "./dist/types/*": "./dist/types/*",
+    "./dist/svg/*": "./dist/svg/*"
+  },
   "files": [
     "./dist/"
   ],

@@ -38,9 +38,10 @@ class ImageTransformer extends Transformer {
     const template = await transformHbs(path.resolve(this.format.config.hbsPath));
     const data = template({ imageData: enrichedImageTag });
 
+    const ext = this.format.config.outputExtension || '.ts';
     return {
       ...file,
-      distPath: path.join(this.destination, `${fileName}.ts`),
+      distPath: path.join(this.destination, `${fileName}${ext}`),
       data,
     };
   }

@@ -44,8 +44,9 @@ class Brandvisual extends Component {
 
   private async getBrandVisualData() {
     if (this.name) {
-      // dynamic import of the lit template from the momentum brand-visuals package
-      return import(`@momentum-design/brand-visuals/dist/ts/${this.name}.ts`)
+      // dynamic import of the compiled ES module from the momentum brand-visuals package
+      // Uses the exports map: @momentum-design/brand-visuals/brand-visuals/* → dist/es/*.js
+      return import(`@momentum-design/brand-visuals/brand-visuals/${this.name}`)
         .then(module => {
           this.handleBrandVisualLoadedSuccess(module.default());
         })

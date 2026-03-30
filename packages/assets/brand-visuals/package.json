@@ -2,6 +2,32 @@
   "name": "@momentum-design/brand-visuals",
   "packageManager": "yarn@3.2.4",
   "version": "0.0.0",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/es/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.js"
+    },
+    "./brand-visuals/*": {
+      "types": "./dist/es/*.d.ts",
+      "import": "./dist/es/*.js"
+    },
+    "./dynamicBrandVisualImports": {
+      "types": "./dist/es/dynamicBrandVisualImports.d.ts",
+      "import": "./dist/es/dynamicBrandVisualImports.js"
+    },
+    "./svg/*": "./dist/svg/*",
+    "./png/*": "./dist/png/*",
+    "./manifest.json": "./dist/manifest.json",
+    "./dist/manifest.json": "./dist/manifest.json",
+    "./dist/ts/*": "./dist/ts/*",
+    "./dist/types/*": "./dist/types/*",
+    "./dist/es/*": "./dist/es/*"
+  },
   "files": [
     "./dist"
   ],
@@ -9,8 +35,9 @@
     "analyze": "yarn analyze:prebuild && yarn analyze:postbuild",
     "analyze:postbuild": "echo \"script 'analyze:postbuild' has not been implemented\"",
     "analyze:prebuild": "echo \"script 'analyze:prebuild' has not been implemented\"",
-    "build": "yarn build:core",
+    "build": "yarn build:core && yarn build:es-extras",
     "build:core": "md-builder -- --definition --icons --config ./config/momentum.json",
+    "build:es-extras": "node ./scripts/generate-es-extras.mjs",
     "clean": "yarn clean:dist",
     "clean:dist": "rimraf ./dist",
     "prepublishOnly": "yarn clean && yarn build",

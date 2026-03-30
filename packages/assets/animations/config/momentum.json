@@ -26,6 +26,17 @@
           }
         },
         {
+          "id": "Manifest-module-js",
+          "target": "./dist/lottie/**/*.*",
+          "destination": "./dist/",
+          "format": {
+            "type": "MANIFEST_MODULE",
+            "config": {
+              "fileName": "manifest.js"
+            }
+          }
+        },
+        {
           "id": "Types",
           "target": "./dist/manifest.json",
           "destination": "./dist/types/",

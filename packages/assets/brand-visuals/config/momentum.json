@@ -202,6 +202,33 @@
               "manifestPath": "@momentum-design/brand-visuals/dist/manifest.json"
             }
           }
+        },
+        {
+          "id": "lit-brand-visuals-svg-es",
+          "target": "./dist/svg/**/*.svg",
+          "destination": "./dist/es",
+          "format": {
+            "type": "LIT",
+            "config": {
+              "partName": "brandvisual",
+              "hbsPath": "./config/templates/lit.ts.hbs",
+              "outputExtension": ".js"
+            }
+          }
+        },
+        {
+          "id": "lit-brand-visuals-png-es",
+          "target": "./dist/png/**/*.png",
+          "destination": "./dist/es",
+          "format": {
+            "type": "IMAGE",
+            "config": {
+              "partName": "brandvisualImage",
+              "hbsPath": "./config/templates/image.ts.hbs",
+              "manifestPath": "@momentum-design/brand-visuals/dist/manifest.json",
+              "outputExtension": ".js"
+            }
+          }
         }
       ],
       "type": "assets"
