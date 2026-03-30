@@ -120,12 +120,12 @@ export interface SvgGlyphsFormat {
 
 export interface LitFormat {
   type: typeof CONSTANTS.FORMATS.LIT;
-  config: { hbsPath: string, partName: string };
+  config: { hbsPath: string, partName: string, outputExtension?: string };
 }
 
 export interface ImageFormat {
   type: typeof CONSTANTS.FORMATS.IMAGE;
-  config: { hbspath: string, partName: string };
+  config: { hbspath: string, partName: string, outputExtension?: string };
 }
 
 /**

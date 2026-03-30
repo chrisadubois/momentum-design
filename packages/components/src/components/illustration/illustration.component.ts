@@ -142,8 +142,9 @@ class Illustration extends Component {
       }
 
       if (illustrationSet === 'momentum-illustrations' && this.name) {
-        // dynamic import of the lit template from the momentum illustrations package
-        return import(`@momentum-design/illustrations/dist/ts/${this.name}.ts`)
+        // dynamic import of the compiled ES module from the momentum illustrations package
+        // Uses the exports map: @momentum-design/illustrations/illustrations/* → dist/es/*.js
+        return import(`@momentum-design/illustrations/illustrations/${this.name}`)
           .then(module => {
             this.handleIllustrationLoadedSuccess(module.default());
           })

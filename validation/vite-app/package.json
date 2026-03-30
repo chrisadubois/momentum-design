@@ -1,0 +1,21 @@
+{
+  "name": "validation-vite-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "validate": "vite build && node validate-bundle.mjs"
+  },
+  "dependencies": {
+    "@momentum-design/animations": "workspace:*",
+    "@momentum-design/brand-visuals": "workspace:*",
+    "@momentum-design/icons": "workspace:*",
+    "@momentum-design/illustrations": "workspace:*",
+    "lit": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}

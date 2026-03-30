@@ -93,6 +93,19 @@
               "hbsPath": "./config/templates/lit.ts.hbs"
             }
           }
+        },
+        {
+          "id": "lit-illustrations-es",
+          "target": "./dist/svg/**/*.*",
+          "destination": "./dist/es",
+          "format": {
+            "type": "LIT",
+            "config": {
+              "partName": "illustration",
+              "hbsPath": "./config/templates/lit.ts.hbs",
+              "outputExtension": ".js"
+            }
+          }
         }
       ],
       "type": "assets"

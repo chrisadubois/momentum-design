@@ -8,7 +8,8 @@
   "private": true,
   "type": "commonjs",
   "workspaces": [
-    "./packages/**/*"
+    "./packages/**/*",
+    "./validation/*"
   ],
   "scripts": {
     "analyze:dependencies": "yarn syncpack lint",
