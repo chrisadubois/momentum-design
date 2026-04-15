@@ -250,6 +250,22 @@ class Input
   }
 
   /**
+   * Handles the focus event of the input field.
+   * Detects value changes from external sources (e.g., password manager autofill)
+   * that set the native input's value without dispatching input/change events.
+   * If a value drift is detected, syncs the component state and dispatches
+   * an input event so consumers are notified.
+   * @internal
+   */
+  protected onFocus() {
+    if (this.inputElement && this.inputElement.value !== this.value) {
+      this.updateValue();
+      this.setInputValidity();
+      this.dispatchEvent(new Event('input', { bubbles: true, composed: true }));
+    }
+  }
+
+  /**
    * Handles the input event of the input field.
    * Updates the value and sets the validity of the input field.
    * @internal
@@ -397,6 +413,7 @@ class Input
       size=${ifDefined(this.size)}
       @input=${this.onInput}
       @change=${this.onChange}
+      @focus=${this.onFocus}
       @keydown=${this.handleKeyDown}
     />`;
   }

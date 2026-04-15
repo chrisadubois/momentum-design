@@ -607,6 +607,44 @@ test('mdc-input', async ({ componentsPage, browserName }) => {
       ]).toContain(validationMessage);
     });
 
+    await test.step('should sync value when input is programmatically filled before focus (autofill)', async () => {
+      const form = await setup(
+        {
+          componentsPage,
+          id: 'test-mdc-input',
+          placeholder: 'Enter email',
+          autocomplete: 'email',
+        },
+        true,
+      );
+      const input = form.locator('mdc-input');
+
+      // Simulate password manager autofill: set native input value without dispatching events
+      await input.evaluate((el: HTMLElement) => {
+        const nativeInput = el.shadowRoot?.querySelector('input');
+        if (nativeInput) {
+          // Directly set value like a password manager would — no events fired
+          const nativeInputValueSetter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+          nativeInputValueSetter?.call(nativeInput, 'user@example.com');
+        }
+      });
+
+      // Verify the component value has NOT synced yet (no events were dispatched)
+      await expect(input).toHaveAttribute('value', '');
+
+      // Listen for the input event that onFocus should dispatch
+      const inputEventPromise = componentsPage.waitForEvent(input, 'input');
+
+      // Focus the input — this triggers onFocus which detects the value drift
+      await input.evaluate((el: HTMLElement) => el.focus());
+
+      // The input event should have been dispatched
+      await expect(inputEventPromise).toEventEmitted();
+
+      // The component value should now be synced
+      await expect(input).toHaveAttribute('value', 'user@example.com');
+    });
+
     await test.step('spatial navigation', async () => {
       const form = await setup(
         {
